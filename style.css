@@ -1,0 +1,8 @@
+#custom-cpucat {
+  font-family: "MyFont", monospace;
+  font-size: 42px;
+  font-weight: bold;
+  color: white;
+  padding-left: 8px;
+  padding-right: 8px;
+}

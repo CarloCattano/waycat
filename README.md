@@ -1,2 +1,3 @@
 # waycat
-waybar animated icons custom module 
+
+waybar animated icons custom module
