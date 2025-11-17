@@ -8,7 +8,7 @@ SPEED=0.5
 # DRAW ANIMATION FRAMES ENCODED IN LETTERS B TO E
 
 anim(){
-	for i in {B..E};do
+	for i in {B..F};do
 		echo $i
 		sleep $SPEED 
 	done
