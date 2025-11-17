@@ -1,8 +1,7 @@
 #!/bin/bash
 
 CPU_USAGE_PERCENT=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1}')
-SPEED=0.5
-
+SPEED=0.2
 
 # ANIM 1
 # DRAW ANIMATION FRAMES ENCODED IN LETTERS B TO E
@@ -16,7 +15,7 @@ anim(){
 
 run(){
 
-	SPEED=$(echo "scale=2; 1 / (2 + ($CPU_USAGE_PERCENT / 70))" | bc)
+	SPEED=$(echo "scale=2; 1 / (4 + ($CPU_USAGE_PERCENT / 100))" | bc)
 	anim
 	run
 }
