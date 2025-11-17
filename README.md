@@ -8,3 +8,5 @@ waybar animated icons custom module
 - Export to ttf -> put fonts in ~/.local/share/fonts
 - use font in custom class in waybar style.css
 - run the script on the waybar via custom module
+
+inspired by [https://github.com/win0err/gnome-runcat](gnome-runcat)
