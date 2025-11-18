@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-interval="${1:-1}"
 CPU_USAGE=0.0
+SLEEP_AFTER=4
+
+
+AWAKE_FRAMES=($(eval echo {B..F}))
+SLEEP_FRAMES=($(eval echo {G..J}))
+
+COUNT=0
 
 read_cpu() {
-  # Read the "cpu " line and compute active and total as integers.
   awk '/^cpu /{
     user=$2; nice=$3; sys=$4; idle=$5;
     active = user + nice + sys;
@@ -15,7 +20,6 @@ read_cpu() {
   }' /proc/stat
 }
 
-# prime the previous counters
 read prev_active prev_total < <(read_cpu)
 
 while true; do
@@ -31,36 +35,39 @@ while true; do
     utilization=$(awk -v a="$delta_active" -v t="$delta_total" 'BEGIN { printf "%.4f", (a / t) }')
   fi
 
-  # print fraction; to print percent multiply by 100: awk ... { printf "%.2f%%", (a/t*100) }
-  # printf "%s\n" "$utilization"
   CPU_USAGE=$utilization	
 
-
-	# slow cpu usage means SPEED is higher, but cant be too low or the animation will be too fast, 
-	# so clip the minimum speed to 0.05s
 	SPEED=$(awk -v u="$CPU_USAGE" 'BEGIN { printf "%.2f", 1 / (4 + (u * 100)) }')
 	# clip minimum speed
 	if (( $(echo "$SPEED < 0.05" | bc -l) )); then
 		SPEED=0.05
 	fi
-	### MAKE THE CAT SLEEP IF CPU USAGE IS LOW ###
 
-	if [ $CPU_USAGE -ge 0.2 ]; then
-		for i in {G..J};do
-			echo $i
+	### MAKE THE CAT SLEEP IF CPU USAGE IS LOW after SLEEP_AFTER ###
+	if (( $(echo "$CPU_USAGE < 0.02" | bc -l) )); then
+		COUNT=$((COUNT + 1))
+	else
+		COUNT=0
+	fi
+
+	### CAT IS SLEEPING ###
+	if [ $COUNT -ge $SLEEP_AFTER ]; then
+		for s in "${SLEEP_FRAMES[@]}";do
+			echo $s
 			sleep $SPEED 
 		done
 
 	### CAT IS AWAKE ###
 	else
-		for i in {B..F};do
+		for i in "${AWAKE_FRAMES[@]}";do
 			echo $i
 			sleep $SPEED 
 		done
 
 	fi
 
-
   prev_active=$active
   prev_total=$total
 done
+
+# vim: set ts=2 sw=2
