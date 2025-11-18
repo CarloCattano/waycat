@@ -4,7 +4,6 @@ set -euo pipefail
 CPU_USAGE=0.0
 SLEEP_AFTER=4
 
-
 AWAKE_FRAMES=($(eval echo {B..F}))
 SLEEP_FRAMES=($(eval echo {G..J}))
 

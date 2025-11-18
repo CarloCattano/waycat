@@ -31,6 +31,13 @@ Untitled1
 }
 ```
 
+- put the catloop.sh script in ~/scripts or any other path you like
+    waybar will call it here and it will run endlessly
+```json
+	"custom/cpucat": {
+        "exec":"~/scripts/catloop.sh",
+```
+
 example test font:
 B-F Cat running
 G-J Cat sleeping

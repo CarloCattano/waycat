@@ -1,13 +1,9 @@
 {
-    "layer": "top", 
-    "height": 4,     
-    "spacing": 2,     
-    "modules-left": ["hyprland/workspaces","hyprland/window"],
-    "modules-center": ["clock"],
-    "modules-right": ["custom/cpucat", "cpu","temperature", "battery", "tray"],
+
+    "modules-right": ["custom/cpucat", ... ],
  
 	"custom/cpucat": {
-        "exec":"~/scripts/cat_loop.sh",
+        "exec":"~/scripts/catloop.sh",
         "spacing": 1,
         "format": "{}",
         "tooltip": true,
