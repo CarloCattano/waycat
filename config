@@ -1,7 +1,15 @@
 {
 
-	"modules-right": ["custom/cpucat", "custom/skull" ],
- 
+## ADD THIS TO YOUR WAYBAR CONFIG FILE IN THE APPROPRIATE SECTIONS ##
+
+
+## ADD THE MODULE NAME TO THE DESIRED LOCATION ##
+
+"modules-right": ["custom/cpucat", "custom/skull" ],
+
+
+## ADD THE SCRIPT LOCATION AT exec ##
+
 	"custom/cpucat": {
         "exec":"~/scripts/catloop.sh",
         "spacing": 1,
@@ -10,13 +18,13 @@
     },
 
 
+## ADD THE SCRIPTS LOCATION AT exec ##
+
 	"custom/skull": {
         "exec":"~/scripts/skull.sh",
         "spacing": 1,
         "format": "{}",
         "tooltip": true,
     },
-
-	...
 
 }

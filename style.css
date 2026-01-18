@@ -1,3 +1,13 @@
+
+/*
+* ADD TO YOUR WAYBAR STYLE 
+*
+* ~/.local/share/fonts/Waycat and Skulltype
+*
+* Import the custom fonts and 
+* style the widgets as needed.
+*
+* */
 #custom-cpucat {
   font-family: "Waycat", monospace;
   font-size: 32px;
