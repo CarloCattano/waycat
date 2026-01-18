@@ -1,5 +1,9 @@
 # waycat
 
+![catskull_18_01_08_20](https://github.com/user-attachments/assets/5d333cf8-326b-43f0-be5a-af816d49dc16)
+
+
+
 waybar animated icons custom module
 
 # Encoding svgs into fonts
