@@ -1,9 +1,17 @@
 {
 
-    "modules-right": ["custom/cpucat", ... ],
+	"modules-right": ["custom/cpucat", "custom/skull" ],
  
 	"custom/cpucat": {
         "exec":"~/scripts/catloop.sh",
+        "spacing": 1,
+        "format": "{}",
+        "tooltip": true,
+    },
+
+
+	"custom/skull": {
+        "exec":"~/scripts/skullloop.sh",
         "spacing": 1,
         "format": "{}",
         "tooltip": true,

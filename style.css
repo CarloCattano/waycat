@@ -1,5 +1,14 @@
 #custom-cpucat {
-  font-family: "Untitled1", monospace;
+  font-family: "Waycat", monospace;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#custom-skull {
+  font-family: "Skulltype", monospace;
   font-size: 40px;
   font-weight: bold;
   color: white;
