@@ -11,7 +11,7 @@
 
 
 	"custom/skull": {
-        "exec":"~/scripts/skullloop.sh",
+        "exec":"~/scripts/skull.sh",
         "spacing": 1,
         "format": "{}",
         "tooltip": true,
