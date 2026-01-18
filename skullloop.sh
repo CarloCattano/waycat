@@ -4,8 +4,8 @@ set -euo pipefail
 CPU_USAGE=0.0
 SLEEP_AFTER=4
 
-AWAKE_FRAMES=($(eval echo {A..E}))
-SLEEP_FRAMES=($(eval echo {G..N}))
+AWAKE_FRAMES=($(eval echo {A..S}))
+SLEEP_FRAMES=($(eval echo {a..t}))
 
 COUNT=0
 
@@ -38,30 +38,38 @@ while true; do
 
 	SPEED=$(awk -v u="$CPU_USAGE" 'BEGIN { printf "%.2f", 1 / (4 + (u * 100)) }')
 	# clip minimum speed
-	if (( $(echo "$SPEED < 0.03" | bc -l) )); then
-		SPEED=0.03
+	if (( $(echo "$SPEED < 0.05" | bc -l) )); then
+		SPEED=0.05
 	fi
 
-	### MAKE THE CAT SLEEP IF CPU USAGE IS LOW after SLEEP_AFTER ###
+	### SLEEP IF CPU USAGE IS LOW after SLEEP_AFTER ###
 	if (( $(echo "$CPU_USAGE < 0.02" | bc -l) )); then
 		COUNT=$((COUNT + 1))
 	else
 		COUNT=0
 	fi
 
-	### CAT IS SLEEPING ###
+	### SLEEPING ###
 	if [ $COUNT -ge $SLEEP_AFTER ]; then
 		for s in "${SLEEP_FRAMES[@]}";do
 			echo $s
 			sleep $SPEED 
 		done
 
-	### CAT IS AWAKE ###
+	### AWAKE ### AND SMOKE
 	else
-		for i in "${AWAKE_FRAMES[@]}";do
-			echo $i
-			sleep $SPEED 
-		done
+		if (( $(echo "$CPU_USAGE > 0.6" | bc -l) )); then
+			for i in "${AWAKE_FRAMES[@]:0:9}";do
+				echo $i
+				sleep $SPEED 
+			done
+		else
+			# only J.>S
+			for i in "${AWAKE_FRAMES[@]:9}";do
+				echo $i
+				sleep $SPEED 
+			done
+		fi
 
 	fi
 
